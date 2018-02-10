@@ -1,0 +1,89 @@
+<nav class="navbar navbar-inverse menu">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+            <a class="navbar-brand" id="logotipo" href="{{base}}"><img src="../img/logo.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        
+            <ul class="nav navbar-nav navbar-right">
+           
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container" >
+    <div class="row" style="margin-bottom:100px">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 col-sm-offset-2 col-lg-offset-4 col-md-offset-3" style="margin-top: 7%">
+            <form role="form" name="novoLogin">
+                <!--h2>Please Sign Up <small>It's free and always will be.</small></h2>
+                <hr class="colorgraph"-->
+                <div class="text-center">
+                                   <img src="../img/logo.png"  width="120px" height="140px">
+ 
+                </div>
+               
+                <p></p>
+
+                
+
+                <div class="form-group" >
+                    Email
+                    <input type="text" ng-model="logins.username" id="display_name" class="form-control input-lg" placeholder="Email" tabindex="3">
+                </div>
+               
+               
+               
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                           Password
+                            <input type="password" ng-model="logins.password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+                        </div>
+                    </div>
+                  
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <!--div class="form-group">
+                        <span ng-show="novoLogin.logins.username.$dirty || novoLogin.logins.username.$dirty || !logins.username || !logins.password" class="error">Por favor, verifique o email e a password</span>
+                         </div-->
+                         
+                         
+                         <div class="form-group">
+                        <span ng-show="msgError" class="error">Email ou password incorrectos</span>
+                         </div>
+                         
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                       <div class="form-group"> 
+                              <div class="checkbox">
+                                <label><input type="checkbox"> Lembrar-me</label>
+                              </div>
+                          </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                       <!--div class="form-group"> 
+                              <div class="checkbox">
+                                <a href="">Esqueci a password</a>
+                              </div>
+                          </div-->
+                    </div>
+                </div>
+
+                <!--hr class="colorgraph"-->
+                <div class="row">
+                    <div class="col-xs-12 col-md-6"><input type="submit" value="Login" ng-click="loginUser()" class="btn btnSuccess btn-primary btn-block btn-lg" tabindex="" ng-disabled="!logins.username || !logins.password"></div>
+                    <div class="col-xs-12 col-md-6">
+                    <a href="#" ng-click="register()" class="btn btn-success btnChangeOption btn-block btn-lg">Ou Registe-se</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
