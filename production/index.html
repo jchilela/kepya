@@ -1,0 +1,2543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <base href="/amp/bower_components/entities/producer/production/">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kepya| Comprador</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../../../bower_components/angular/angular.min.js"></script>
+    <script src="../../../../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../../../../bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="../../../../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../../../../bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="../../../../bower_components/angular-material/angular-material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="../../../../css/index.css">
+    <script src="../../../../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+
+
+
+<script src="../../../../controllers/buyer.js"></script>
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+  
+  <style>
+      
+      .MyModal {
+    height: 750px;
+    overflow-y: auto;
+}
+      </style>
+  
+  </head>
+
+  <body class="nav-md" ng-app="kepya" ng-controller="producer">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"> <img src="../../../../img/logo.png" height="40" width="40"> <span>Kepya</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Bem vindo,</span>
+                <h2>{{user.firstName}}</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>Geral</h3>
+              
+                <!--a href="" ng-click="producer()">producer</a>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#missingData">Open Modal</button-->
+                
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <!--ul class="nav child_menu">
+                      <li><a ng-click="registarProductosModal()">Cadastrar produtos</a></li>
+                       <li><a href="" ng-click="buscarProdutosByProducer()">Ver/Editar produtos</a></li>
+                      <li><a href="" ng-click="editarOqueProduzo()">Editar o que eu produzo</a></li>
+                      <!--li><a href="index3.html">Dashboard3</a></li>
+                    </ul-->
+                  </li>
+                  <li><a><i class="fa fa-edit"></i>As Minhas Reservas <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="" ng-click="buscarMinhasCompras()">As Minhas Reservas</a></li>
+                      <li><a href="" ng-click="buscarComprasPagas()">As Minhas Compras</a></li>
+                      <!--li><a href="form_validation.html">Form Validation</a></li>
+                      <li><a href="form_wizards.html">Form Wizard</a></li>
+                      <li><a href="form_upload.html">Form Upload</a></li>
+                      <li><a href="form_buttons.html">Form Buttons</a></li-->
+                    </ul>
+                  </li>
+                  <!--li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="general_elements.html">General Elements</a></li>
+                      <li><a href="media_gallery.html">Media Gallery</a></li>
+                      <li><a href="typography.html">Typography</a></li>
+                      <li><a href="icons.html">Icons</a></li>
+                      <li><a href="glyphicons.html">Glyphicons</a></li>
+                      <li><a href="widgets.html">Widgets</a></li>
+                      <li><a href="invoice.html">Invoice</a></li>
+                      <li><a href="inbox.html">Inbox</a></li>
+                      <li><a href="calendar.html">Calendar</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="tables.html">Tables</a></li>
+                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="chartjs.html">Chart JS</a></li>
+                      <li><a href="chartjs2.html">Chart JS2</a></li>
+                      <li><a href="morisjs.html">Moris JS</a></li>
+                      <li><a href="echarts.html">ECharts</a></li>
+                      <li><a href="other_charts.html">Other Charts</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
+                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                    </ul>
+                  </li-->
+                </ul>
+              </div>
+              <div class="menu_section">
+               
+               
+               
+                <!--h3>Live On</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="e_commerce.html">E-commerce</a></li>
+                      <li><a href="projects.html">Projects</a></li>
+                      <li><a href="project_detail.html">Project Detail</a></li>
+                      <li><a href="contacts.html">Contacts</a></li>
+                      <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="page_403.html">403 Error</a></li>
+                      <li><a href="page_404.html">404 Error</a></li>
+                      <li><a href="page_500.html">500 Error</a></li>
+                      <li><a href="plain_page.html">Plain Page</a></li>
+                      <li><a href="login.html">Login Page</a></li>
+                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="#level1_1">Level One</a>
+                        <li><a>Level One<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li class="sub_menu"><a href="level2.html">Level Two</a>
+                            </li>
+                            <li><a href="#level2_1">Level Two</a>
+                            </li>
+                            <li><a href="#level2_2">Level Two</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="#level1_2">Level One</a>
+                        </li>
+                    </ul>
+                  </li>                  
+                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                </ul-->
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <!--a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a-->
+              <a data-toggle="tooltip" data-placement="top" title="Logout" ng-click="logout()" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">{{user.firstName}}
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <!--li><a href="javascript:;"> Perfil</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">100%</span>
+                        <span>Configurações</span>
+                      </a>
+                    </li-->
+                    <li > <a href="" ng-click="editarPerfil()">Editar Perfil</a> </li>
+                    <!--li><a href="" ng-click="ajuda()">Ajuda</a></li-->
+                    <li><a href="" ng-click="logout()"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <!--i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">0</span-->
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                      <li>Sem notificações</li>
+                    <!--li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li-->
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <!--div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Total de vendas</span>
+              <div class="count">{{estatisticas.totalVendas}}</div>
+            
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Total de productos</span>
+              <div class="count">{{todosProductos.length}}</div>
+              
+            </div-->
+            
+            
+            
+        
+            
+            <!--div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
+              <div class="count green">2,500</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
+              <div class="count">4,567</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
+              <div class="count">2,315</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
+              <div class="count">7,325</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div-->
+          
+          
+  
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 text-center" style="margin-top:150px"> 
+            
+           
+             
+                    <h1>Pesquise produtos no Kepya</h1>
+                            <!--div>  
+                                 
+                                <ul>  
+                                    <li  ng-repeat="place in buscarProductosBuyer |place.nome filter:curPlace">  
+                                        <a ng-href="https://www.google.co.in/webhp?q={{place}}">{{nome}} </a>  
+                                    </li>  
+                                </ul>  
+                            </div-->  
+
+                       <div>
+                           
+                       
+                        <input type="text" ng-model="curPlace"  class="form-control" style="height:50px; font-size:28px; " maxlength="20"> 
+                           
+                           
+
+                           <div ng-repeat="pro in todosOsProdutos" >
+                                    <div ng-repeat="product in products" ng-if="product.id == pro.nome"  ng-init="pusharProduto(product.id,product.name,pro.descricao,pro.preco,pro.idProducer,pro.idProvincia,pro.fotografia,pro.dataColheita)">
+                                      
+                                    </div>
+                                        
+                            </div>
+                      
+                      
+                      
+                      <div class="container alert-info" style="background-color:#7F4C9D; color:white" ng-show="curPlace.length > 1">
+                          <h3> Na sua provincia: <b><i> <span ng-repeat="state in states" ng-if="state.id == user.codProvince">{{state.name}}</span></i></b> </h3>
+                          
+                        <span ng-repeat="producto in produc.items | filter:curPlace"><span ng-show="producto.producto==''">Oops. Nenhum produtor na sua província tem esse produto!.</span></span>
+                          <div ng-repeat="producto in produc.items | filter:curPlace" ng-if="curPlace.length > 1 && user.codProvince == producto.provincia" class="col-md-2 " style=" border: .5px solid red; border-radius: 0px;"> 
+                          
+                          
+                          
+                         <strong> {{producto.producto | uppercase}} </strong>
+                            <img src="https://kepya.co.ao/api/classes/img/{{producto.fotografia}}"   width="100" height="70">
+                            <div class="producttitle">{{producto.description}}</div>
+                            <div class="productprice">
+                               <div class="pricetext">
+                                <b>Kg/{{producto.preco | number | withPoint }} AOA</b>
+                                <span>Data da Colheita: <br>{{(producto.dataColheita.split(' ')[0]).split('-')[2]}}-{{(producto.dataColheita.split(' ')[0]).split('-')[1]}}-{{(producto.dataColheita.split(' ')[0]).split('-')[0]}}</span>
+                            </div>
+                            <div class=""><a href="" ng-click="adicionarAoCarrinho(producto.idProducto,producto.producto,producto.description,producto.preco,producto.produtor,producto.provincia,producto.fotografia, producto.dataColheita)" class="btn btn-danger btn-md" role="button">Comprar</a></div></div>
+                        </div>
+                          
+                                       </div>
+
+                      
+                      
+                      
+                      </div>
+                     
+                      <div class="container" ng-show="curPlace.length > 1  && user.codProvince != producto.provincia" style="border-width:4">
+                          <h1 > Em outras provincias </h1>
+                       <div class="col-md-2 column productbox " ng-repeat="producto in produc.items | filter:curPlace" ng-if="curPlace.length > 1 && user.codProvince != producto.provincia" style=" border: .5px solid red; border-radius: 0px;">
+                           <strong>{{producto.producto | uppercase}}</strong>
+                            <img src="https://kepya.co.ao/api/classes/img/{{producto.fotografia}}"  width="100" height="70">
+                            <!--div class="producttitle">{{producto.description}}</div-->
+                            <div class="productprice">
+                            <div class="pricetext">
+                                <b>Kg/{{producto.preco | number | withPoint }} AOA</b><br>
+                            <span>Data da Colheita: <br>{{(producto.dataColheita.split(' ')[0]).split('-')[2]}}-{{(producto.dataColheita.split(' ')[0]).split('-')[1]}}-{{(producto.dataColheita.split(' ')[0]).split('-')[0]}}</span>
+                            </div>
+                            
+                            
+                            <div class=""><a href="" ng-click="adicionarAoCarrinho(producto.idProducto,producto.producto,producto.description,producto.preco,producto.produtor,producto.provincia,producto.fotografia,producto.dataColheita)" class="btn btn-danger btn-md" role="button">Comprar</a></div></div>
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                       
+                
+                       
+                        </div>
+                        
+                          
+                            
+                              
+                                
+                                  
+                                    
+                                      
+                    
+                        <div class="container" style="border-width:4; margin-top:50px" ng-show="!curPlace">
+                         
+                               <div class="col-md-2 column productbox " ng-repeat="producto in produc.items | filter:curPlace"  style=" border: .1px solid red; border-radius: 0px;" ng-show="$index < 6">
+                                      <strong> {{producto.producto | uppercase}} </strong>
+                                        <img src="https://kepya.co.ao/api/classes/img/{{producto.fotografia}}" style="max-width:100px; max-height:70px; min-width:100px; min-height:70px"   class="img-responsive">
+                                        <!--div class="producttitle">{{producto.description}}</div-->
+                                        <div class="productprice">
+                                        <div class="pricetext">
+                                            <b>Kg/{{producto.preco| number | withPoint }} AOA</b><br>
+                                        <span>Data da Colheita: <br>{{(producto.dataColheita.split(' ')[0]).split('-')[2]}}-{{(producto.dataColheita.split(' ')[0]).split('-')[1]}}-{{(producto.dataColheita.split(' ')[0]).split('-')[0]}}</span>
+                                        </div>
+
+
+                                        <div class=""><a href="" ng-click="adicionarAoCarrinho(producto.idProducto,producto.producto,producto.description,producto.preco,producto.produtor,producto.provincia,producto.fotografia,producto.dataColheita)" class="btn btn-danger btn-md" role="button">Comprar</a></div></div>
+
+                                </div>
+                       
+                
+                       
+                        </div>  
+                                                             
+             
+              </div>  
+                   </div>
+
+          
+          <!--input type="text" ng-model="searchText" ng-change="change(text)" placeholder="filter" />
+          <li ng-repeat="entry in entries">
+<span class="{{entry.classname}}"><a href="{{entry.link}}">{{entry.title}} - {{entry.info}}</a></span>
+</li>
+         {{entries}}
+         
+         
+         <li ng-repeat="entry in entries">
+<span class="{{entry.classname}}"><a href="{{entry.link}}">{{entry.title}} - {{entry.info}}</a></span>
+</li>
+<li ng-repeat="person in persons">
+<span class="{{person.classname}}"><a href="{{entry.link}}">{{person.name}} - {{person.jobtitle}}</a></span>
+</li-->
+          
+          <!-- /top tiles -->
+
+          <!--div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="dashboard_graph">
+
+                <div class="row x_title">
+                  <div class="col-md-6">
+                    <h3>Network Activities <small>Graph title sub-title</small></h3>
+                  </div>
+                  <div class="col-md-6">
+                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <div id="chart_plot_01" class="demo-placeholder"></div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                  <div class="x_title">
+                    <h2>Top Campaign Performance</h2>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="col-md-12 col-sm-12 col-xs-6">
+                    <div>
+                      <p>Facebook Campaign</p>
+                      <div class="">
+                        <div class="progress progress_sm" style="width: 76%;">
+                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <p>Twitter Campaign</p>
+                      <div class="">
+                        <div class="progress progress_sm" style="width: 76%;">
+                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12 col-xs-6">
+                    <div>
+                      <p>Conventional Media</p>
+                      <div class="">
+                        <div class="progress progress_sm" style="width: 76%;">
+                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <p>Bill boards</p>
+                      <div class="">
+                        <div class="progress progress_sm" style="width: 76%;">
+                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+          </div>
+          <br />
+
+          <div class="row">
+
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>App Versions</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <h4>App Usage across versions</h4>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.2</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>123k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.3</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>53k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.4</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>23k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.5</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>3k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="widget_summary">
+                    <div class="w_left w_25">
+                      <span>0.1.5.6</span>
+                    </div>
+                    <div class="w_center w_55">
+                      <div class="progress">
+                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w_right w_20">
+                      <span>1k</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title">
+                  <h2>Device Usage</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <table class="" style="width:100%">
+                    <tr>
+                      <th style="width:37%;">
+                        <p>Top 5</p>
+                      </th>
+                      <th>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                          <p class="">Device</p>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                          <p class="">Progress</p>
+                        </div>
+                      </th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                      </td>
+                      <td>
+                        <table class="tile_info">
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square blue"></i>IOS </p>
+                            </td>
+                            <td>30%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square green"></i>Android </p>
+                            </td>
+                            <td>10%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square purple"></i>Blackberry </p>
+                            </td>
+                            <td>20%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square aero"></i>Symbian </p>
+                            </td>
+                            <td>15%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square red"></i>Others </p>
+                            </td>
+                            <td>30%</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>Quick Settings</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="dashboard-widget-content">
+                    <ul class="quick-list">
+                      <li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
+                      </li>
+                      <li><i class="fa fa-bars"></i><a href="#">Subscription</a>
+                      </li>
+                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
+                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
+                      </li>
+                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
+                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
+                      </li>
+                      <li><i class="fa fa-area-chart"></i><a href="#" ng-click="logout()">Logout</a>
+                      </li>
+                    </ul>
+
+                    <div class="sidebar-widget">
+                        <h4>Profile Completion</h4>
+                        <canvas width="150" height="80" id="chart_gauge_01" class="" style="width: 160px; height: 100px;"></canvas>
+                        <div class="goal-wrapper">
+                          <span id="gauge-text" class="gauge-value pull-left">0</span>
+                          <span class="gauge-value pull-left">%</span>
+                          <span id="goal-text" class="goal-value pull-right">100%</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Recent Activities <small>Sessions</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="dashboard-widget-content">
+
+                    <ul class="list-unstyled timeline widget">
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                          </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                            </div>
+                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                          </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                            </div>
+                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                          </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                            </div>
+                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="block">
+                          <div class="block_content">
+                            <h2 class="title">
+                                              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
+                                          </h2>
+                            <div class="byline">
+                              <span>13 hours ago</span> by <a>Jane Smith</a>
+                            </div>
+                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-8 col-sm-8 col-xs-12">
+
+
+
+              <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Visitors location <small>geo-presentation</small></h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <div class="dashboard-widget-content">
+                        <div class="col-md-4 hidden-small">
+                          <h2 class="line_30">125.7k Views from 60 countries</h2>
+
+                          <table class="countries_list">
+                            <tbody>
+                              <tr>
+                                <td>United States</td>
+                                <td class="fs15 fw700 text-right">33%</td>
+                              </tr>
+                              <tr>
+                                <td>France</td>
+                                <td class="fs15 fw700 text-right">27%</td>
+                              </tr>
+                              <tr>
+                                <td>Germany</td>
+                                <td class="fs15 fw700 text-right">16%</td>
+                              </tr>
+                              <tr>
+                                <td>Spain</td>
+                                <td class="fs15 fw700 text-right">11%</td>
+                              </tr>
+                              <tr>
+                                <td>Britain</td>
+                                <td class="fs15 fw700 text-right">10%</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div id="world-map-gdp" class="col-md-8 col-sm-12 col-xs-12" style="height:230px;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+
+
+                <!-- Start to do list >
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>To Do List <small>Sample tasks</small></h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                      <div class="">
+                        <ul class="to_do">
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Schedule meeting with new client </p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Create email address for new intern</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Create email address for new intern</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
+                          </li>
+                          <li>
+                            <p>
+                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End to do list -->
+                
+                <!-- start of weather widget >
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Daily active users <small>Sessions</small></h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="temperature"><b>Monday</b>, 07:30 AM
+                            <span>F</span>
+                            <span><b>C</b></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="weather-icon">
+                            <canvas height="84" width="84" id="partly-cloudy-day"></canvas>
+                          </div>
+                        </div>
+                        <div class="col-sm-8">
+                          <div class="weather-text">
+                            <h2>Texas <br><i>Partly Cloudy Day</i></h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="weather-text pull-right">
+                          <h3 class="degrees">23</h3>
+                        </div>
+                      </div>
+
+                      <div class="clearfix"></div>
+
+                      <div class="row weather-days">
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Mon</h2>
+                            <h3 class="degrees">25</h3>
+                            <canvas id="clear-day" width="32" height="32"></canvas>
+                            <h5>15 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Tue</h2>
+                            <h3 class="degrees">25</h3>
+                            <canvas height="32" width="32" id="rain"></canvas>
+                            <h5>12 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Wed</h2>
+                            <h3 class="degrees">27</h3>
+                            <canvas height="32" width="32" id="snow"></canvas>
+                            <h5>14 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Thu</h2>
+                            <h3 class="degrees">28</h3>
+                            <canvas height="32" width="32" id="sleet"></canvas>
+                            <h5>15 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Fri</h2>
+                            <h3 class="degrees">28</h3>
+                            <canvas height="32" width="32" id="wind"></canvas>
+                            <h5>11 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <div class="daily-weather">
+                            <h2 class="day">Sat</h2>
+                            <h3 class="degrees">26</h3>
+                            <canvas height="32" width="32" id="cloudy"></canvas>
+                            <h5>10 <i>km/h</i></h5>
+                          </div>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- end of weather widget >
+              </div>
+            </div>
+          </div-->
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+           Kepya - Área de administração do comprador
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    
+  
+        <div class="modal fade " data-keyboard="false" data-backdrop="static" id="missingData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-clock-o"></i> O seu processo de registo está quase completo</h4>
+                    <a href="" class="btn btn-success" style="background-color:red" ng-click="logout()">Logout</a> 
+                    <a href="" class="btn btn-success pull-right" style="" ng-click="concluirRegisto()" ng-show="user.statusTelephone == 1" >Concluir</a>
+
+                </div>
+                <div class="modal-body center-block">
+                    <ul class="nav nav-tabs">
+                    
+                        <li class="active" ng-show="user.statusTelephone == 0"><a href="#tab1" data-toggle="tab">Confirmar a conta</a></li>
+                        <li ng-class="{'active':user.statusTelephone == 1}" ng-show="user.statusTelephone == 1">
+                        <a href="#tab2" data-toggle="tab">Informação adicional</a></li>
+                        <li ng-show="user.statusTelephone == 1"><a href="#tab3" data-toggle="tab">Resumo</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1" ng-show="user.statusTelephone == 0">
+                           
+                           
+                           
+                           
+                           <script>
+                               
+                        
+                             $('.btnNext').click(function(){
+                                  $('.nav-tabs > .active').next('li').find('a').trigger('click');
+                                });
+
+                                  $('.btnPrevious').click(function(){
+                                  $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+                                });
+                            
+                            </script>
+                           
+                           
+                            <div >
+                                <form role="form">
+                                    <h2>Por favor, forneça o código enviado para o número: <i> {{user.telephone}}</i></h2><br>
+                                    <span style="color:red">Depois de confirmado; deverá fazer login para completar o registo</span><br>
+
+                                    <div class="row" ng-class="{'disabled':disable==true}" >
+                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                            <div class="form-group"><p></p>
+                                              
+                                                <input type="text" ng-model="producerV.telephoneCode" class="form-control input-lg" placeholder="Código" tabindex="1">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            <div class="form-group"><p></p>
+                                                 <a href="#" class="btn btn-success btnChangeOption btn-block btn-sm" ng-click="verifyTelephone()">OK</a>
+                                                
+                                                 <a href="#" class="btn btn-alert btnChangeOption btn-block btn-sm"  ng-show="loggedProducer.inactive" ng-click="resendTelephoneCode()">Reenviar</a>
+                                            </div>
+                                        </div>
+
+                                        <!--div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                            <div class="form-group">
+                                               Email
+                                                <input type="text" ng-model="producerV.emailCode" class="form-control input-lg" placeholder="Code" tabindex="2">
+                                            </div>
+                                           
+                                        </div>
+
+                                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            <div class="form-group"><p></p>
+                                                 <a href="#" class="btn btn-success btnChangeOption btn-block btn-sm" ng-click="verifyEmail()">OK</a>
+                                                  <a href="#" class="btn btn-alert btnChangeOption btn-block btn-sm"  ng-show="loggedProducer.inactive" ng-click="resendEmailCode()">Resend</a>
+
+                                            </div>
+                                        </div-->
+
+                                    </div>
+
+                                </form>
+                            </div>
+                            <!--a class="btn btn-primary btnNext" >Next</a>
+                            <a class="btn btn-primary btnNext pull-right" >Later</a-->
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!--TAB 2-->
+                        
+                        
+                        
+                        <div class="tab-pane" id="tab2" ng-class="{'active':user.statusTelephone == 1}">
+                           <div ng-show="user.statusTelephone == 1" >
+            <form role="form">
+                
+                <div class="row" ng-class="{'disabled':disable==true}">
+                     <div class="col-xs-12 col-sm-6 col-md-6 ">
+                            <div class="form-group">
+                                O que você produz? <select id="produto" class="form-control select" ng-model="producerV.producto" ng-options="products.name as products.name for products  in products track by products.id">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                            Toneladas/ano <select class="form-control select" ng-model="producerV.quantidade" ng-options="tons_year.name as tons_year.name for tons_year  in tons_year track by tons_year.id">
+                                    <option value=""></option>
+                                </select>
+                              
+                        </div>
+                        
+
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                            <div class="form-group">Click aqui para adicionar
+                                 <a href="" ng-click="adicionarProductosRegisto()" class="btn btn-success btnChangeOption btn-block btn-md">Adicionar</a>
+                            </div>
+                        </div>
+                    
+                  
+                    
+                </div>
+                
+                 <!--div class="row" ng-class="{'disabled':disable==true}">
+                     <div class="col-xs-12 col-sm-6 col-md-6 ">
+                            <div class="form-group">
+                                Provinces that you can you supply? <select id="produto" class="form-control select" ng-model="registos.selectedProduct" ng-options="states.id as states.name for states  in states track by states.id">
+                                    <option value=""></option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="form-group">Click here to add the province
+                                 <a href="#" class="btn btn-success btnChangeOption btn-block btn-md">Add</a>
+                            </div>
+                        </div>
+                    
+                </div-->
+                
+                
+                
+                
+                
+                
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Produto</th>
+                            <th>Toneladas</th>
+                            <th>Editar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="productos in productosProduz">
+                            <td>{{productos.Producto}}</td>
+                            <td>{{productos.quantidade}}</td>
+                            <th><a href="" ng-click="eliminar('tblProductosRegisto', productos.id)" class="btn btn-success  btnChangeOption btn-block btn-sm" style="background-color:red">Eliminar</a></th>
+                          </tr>      
+                          
+                        </tbody>
+                      </table>
+                  
+                </div>
+                
+               
+                
+            </form>
+        </div>
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                            <!--a class="btn btn-primary btnNext" >Next</a>
+                            <a class="btn btn-primary btnPrevious" >Previous</a-->
+                        </div>
+                        <div class="tab-pane" id="tab3">
+                           
+                           <h3>O seu registo está completo. Por agora assista ao nosso video e aprenda como tirar o máximo da plataforma Kepya. Obrigado</h3><p></p>
+                           
+                            <div class="embed-responsive embed-responsive-16by9">
+                               <iframe width="560" height="315" src="https://www.youtube.com/embed/2gNRCAhi3JE" frameborder="0" gesture="media" allow="encrypted-media" class="embed-responsive-item" allowfullscreen></iframe>
+                               
+                              </div>
+                           
+                           
+                            <!--a class="btn btn-primary btnPrevious" >Previous</a-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     <div class="modal fade " data-keyboard="false" data-backdrop="static" id="registarProductos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-clock-o"></i> Registar produtos</h4>
+                    <!--a href="" class="btn btn-success" style="background-color:red" ng-click="logout()">Logout</a--> 
+                    <a href="" class="btn btn-success pull-right" style="" ng-click="concluirRegistarProdutos()" ng-show="user.statusTelephone == 1" >Concluir</a>
+                    
+                    
+                    <div ng-show="registoSucesso" class="alert-success" style="max-width:300px; margin-top:10px">
+                        <span style="margin-left:10px"> Produto adicionado com sucesso!</span>
+                        
+                    </div>
+
+                </div>
+                <div class="modal-body center-block">
+                    <ul class="nav nav-tabs">
+                    
+                        <li class="active" ng-show="user.statusTelephone == 0"><a href="#tab1" data-toggle="tab">Confirmar a conta</a></li>
+                        <li ng-class="{'active':user.statusTelephone == 1}" ng-show="user.statusTelephone == 1">
+                        <a href="#tab2" data-toggle="tab">Adicionar produto</a></li>
+                        
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1" >
+                           
+                           
+                           
+                           
+                           <script>
+                               
+                        
+                             $('.btnNext').click(function(){
+                                  $('.nav-tabs > .active').next('li').find('a').trigger('click');
+                                });
+
+                                  $('.btnPrevious').click(function(){
+                                  $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+                                });
+                            
+                            </script>
+                           
+                           
+                            <div >
+                                <form role="form" name ="imgRotasDirForm" action="http://localhost:8888/amp/api/classes/gravarProdutos.php" method="post" enctype="multipart/form-data">
+                                    
+                                    <div class="row" >
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                              Produto
+                                                <select id="produto" name="producto" value="{{registarProdutos.producto}}" class="form-control select" ng-model="registarProdutos.producto" ng-options="products.name as products.name for products  in products track by products.id">
+                                    <option value="{{registarProdutos.producto}}"></option>
+                                </select>
+                                            </div>
+                                           
+                                        </div>
+                                        
+                                        
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                               Descrição
+                                                <textarea name="descricao" ng-model="registarProdutos.descricao" class="form-control input-lg" rows="5" tabindex="2"></textarea>
+                                            </div>
+                                           
+                                        </div>
+                                       
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                               Quantidade em Kilogramas
+                                                <input type="text" name="quantidade" ng-model="registarProdutos.quantidade" class="form-control input-lg" placeholder="Quantidade" tabindex="2">
+                                            </div>
+                                           
+                                        </div>
+                                        
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                               Preço
+                                                <input type="text" name="preco" ng-model="registarProdutos.preco" class="form-control input-lg" placeholder="Preço" tabindex="2">
+                                            </div>
+                                           
+                                        </div>
+                                        
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                               Data da colheita
+                                                <input type="text" name="dataColheita" ng-model="registarProdutos.dataColheita" class="form-control input-lg" placeholder="yyy/mm/dd" tabindex="2">
+                                            </div>
+                                           
+                                        </div>
+                                        
+                                        <!--div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                               Nome
+                                                <input type="text" ng-model="registarProdutos.idProducer" class="form-control input-lg" placeholder="Nome do produto" tabindex="2">
+                                            </div>
+                                           
+                                        </div-->
+                                        
+                                        
+                                        
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                              <div class="form-group">
+                                                   Província da colheita<select id="produto" name="idProvincia" class="form-control select" ng-model="registarProdutos.idProvincia" ng-options="states.id as states.name for states  in states track by states.id" value="registarProdutos.idProvincia">
+                                                        <option value=""></option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        
+                                        
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                               Fotografia
+                                                <input type="file" name="fotografia" ng-model="registarProdutos.idProvincia" class="form-control input-lg" placeholder="Nome do produto" tabindex="2">
+                                            </div>
+                                           
+                                        </div>
+
+                                        <div class="col-lg-2">
+
+                                        <input type="hidden" name="campo" value="fotografia">
+                                        <input type="hidden" name="idProducer" value="{{user.id}}">
+
+                                         <input type="hidden" name="tabela" value="tblProductos">
+
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input type="submit" id="submit" name="submit"  class="btn btn-success" ng-disabled="imgRotasDirForm.$pristine || imgRotasDirForm.$invalid" value="Gravar">
+                                        </div>
+
+                                       
+                                        
+
+                                     </div>
+
+                                </form>
+                            </div>
+                            <!--a class="btn btn-primary btnNext" >Next</a>
+                            <a class="btn btn-primary btnNext pull-right" >Later</a-->
+                        </div>
+                        
+                   
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+      <div class="modal fade " data-keyboard="false" data-backdrop="static" id="verProductos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <br>
+               <a href="" class="btn btn-success pull-right" style="" ng-click="concluirEliminarProdutos()" ng-show="user.statusTelephone == 1" >Fechar</a>
+                <div class="container">
+                <center><h3>Todos os produtos</h3></center><p></p>
+                           
+                                 
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Produto</th>
+                            <th>Kilogramas</th>
+                            <th>Preço por Kg</th>
+                            <th>Data da colheita</th>
+                            <th>Editar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                         
+                         
+                          <tr ng-repeat="pro in todosProductos" > 
+                                <td ng-repeat="product in products" ng-if="product.id == pro.nome">
+                                    {{product.name}}
+                                </td>
+                                    <td>{{pro.quantidade}}</td>
+                                    <td>{{pro.preco | number | withPoint }}</td>
+                                     <td>{{pro.dataColheita}}</td>
+                                    <th><a href="" ng-click="eliminarProdutos('tblProductos', pro.id)" class="btn btn-success  btnChangeOption btn-block btn-sm" style="background-color:red">Eliminar</a></th>
+                            </tr>
+                         
+                         
+                        
+                          
+                          
+                          
+                          <!--tr ng-repeat="productos in productosProduz  |filter:{productos.id : productosProduz.id}">
+                            <td>{{productos.nome}}</td>
+                            <td>{{productos.quantidade}}</td>
+                            <th><a href="" ng-click="eliminarProdutos('tblProductos', productos.id)" class="btn btn-success  btnChangeOption btn-block btn-sm" style="background-color:red">Eliminar</a></th>
+                          </tr-->      
+                          
+                        
+                          
+                          
+                        </tbody>
+                      </table>
+                      
+                      
+                    
+                         
+                          
+                  
+                </div>
+                
+
+                    
+                </div>
+              
+                  
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+    
+    <div class="modal fade " data-keyboard="false" data-backdrop="static" id="efectuarPagamento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <br>
+               <a href="" class="btn btn-success pull-right" style="" ng-click="concluirEfectuarPagamento()" ng-show="user.statusTelephone == 1" >Fechar</a>
+                <div class="container">
+                <center><h3>Efectuar pagamento</h3></center><p></p>
+                           
+                                
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <span  ng-if="facturaServer"><b>Total da reserva:</b> {{facturaServer[0].totalPago | number | withPoint }}  AOA </span><br>
+                    <span ng-if="facturaServer" ><b>Valor do transporte:</b> {{valorBid | number | withPoint }}  AOA</span><br><br><br>
+                    <span class="label label-info" style="font-size:18px"  ng-if="facturaServer"><b>Total a pagar:</b> {{(valorBid |num ) + (facturaServer[0].totalPago|num) | number | withPoint }}  AOA</span><br><br>
+                      
+                    
+                     <br>
+                      <span class="alert alert-info" style="font-size:12px" ng-show="successoPagamento">{{successoPagamento}}</span>
+                      <br ng-show="successoPagamento">
+                       <br ng-show="successoPagamento">
+                        <br ng-show="successoPagamento">
+                         <br ng-show="successoPagamento">
+                      
+                       <div class="row" >
+                                      <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img src="http://www.fa.ufl.edu/wp-content/uploads/cardops/Credit-Card-Logos.jpg" class="visible-xs" alt="Lights" style="width:100%; height:40px" height="50px">
+
+
+                                            <img src="http://www.fa.ufl.edu/wp-content/uploads/cardops/Credit-Card-Logos.jpg" class="hidden-xs" style="width:100%; height:40px">
+
+                                            <div class="caption">
+                                              <p style="font-size:10px">Pague online com o cartão da sua preferencia</p>
+                                            </div>
+                                          <a href=""  ng-if="facturaServer" ng-click="pagamentoCartao(((valorBid |num) + (facturaServer[0].totalPago|num)), facturaServer[0].numeroFactura)"  class="btn btn-danger btn-md" role="button" style="margin-top:37px">Pagar</a>
+                                        </div>
+                                      </div>
+                                      <!--div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img src="http://newsroom.mastercard.com/latin-america/files/2016/09/paypal-logo.png"  class="visible-xs" alt="Nature" style="width:100%;height:40px" class="visible-xs" height="">
+ 
+                                               <!--img src="http://newsroom.mastercard.com/latin-america/files/2016/09/paypal-logo.png" class="hidden-xs" style="width:100%; height:40px">
+
+                                            <div class="caption">
+                                              <p style="font-size:10px">Pague online com a sua conta PayPal</p>
+                                            </div>
+
+                                             
+                                            
+                                             <div class="row" id="paypalPagamentoDiv" style="width:100px" ng-class="{'my-disable': cConducao=='0' || cPagamento=='0' || cIdade=='0' || cTermoslegais=='0'}">
+                                            <a href="" id="paypalPagamento" ng-init="pagamentoPaypal(((valorBid |num) + (facturaServer[0].totalPago|num)), facturaServer[0].numeroFactura)" ></a>
+
+
+                                        </div>
+                                            
+                                            
+                                            
+                                            <!--div id="paypal-button"></div>
+
+  <script>
+
+
+    paypal.Button.render({
+
+        env: 'production', // Or 'sandbox'
+
+        client: {
+            sandbox:    'access_token$sandbox$484bpbbgj2p9cjkh$9bac7641389b2de3ac85715a80991624',
+            production: 'access_token$production$tbj55ymj5g96gch5$2255143c65c0fb24c3eda9ac5985fc22'
+        },
+
+        commit: true, // Show a 'Pay Now' button
+
+        payment: function(data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: '1.00', currency: 'USD' }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function(payment) {
+
+                // The payment is complete!
+                // You can now show a confirmation message to the customer
+            });
+        }
+
+    }, '#paypal-button');
+      
+      
+  </script!>
+                                            
+                                             
+                                            
+                                        </div>
+                                      </div-->
+                                      
+                                      
+                                      <div class="col-md-4">
+                                        <div class="thumbnail">
+                                                 <img src="https://kepya.co.ao/api/classes/img/multicaixa.jpg" class="visible-xs" alt="Fjords" style="width:40%; height:60px">
+                                            <img src="https://kepya.co.ao/api/classes/img/multicaixa.jpg" alt="Fjords" class="hidden-xs" style=" height:40px">
+
+                                            <div class="caption">
+                                              <p style="font-size:10px">Faça transferência pelo multicaixa e envie o talão para o email geral@kepya.co.ao</p>
+                                            </div>
+                                            <a href=""  ng-if="facturaServer" ng-click="abrirMulticaixaInfo(((valorBid |num) + (facturaServer[0].totalPago|num) | num), facturaServer[0].numeroFactura)" class="btn btn-danger btn-md" role="button" style="margin-top:10px" >Pagar</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                         
+                          
+                  
+                </div>
+                
+
+                    
+                </div>
+              
+                  
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     <div class="modal fade " data-keyboard="false" data-backdrop="static" id="multicaixaP" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog">
+            <div class="modal-content" ng-if="multibancoTotal">
+             
+             
+             
+              <br>
+               <a href="" class="btn btn-success pull-right" style="" ng-click="concluirmulticaixaP()" ng-show="user.statusTelephone == 1" >Fechar</a>
+                <div class="container">
+                <center><h3>Efectuar pagamento</h3></center><p></p>
+                           <br><br>
+                <span class="alert alert-info" ng-show="successoPagamento">{{successoPagamento}}</span>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:20px">
+                   <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" >
+                
+                   <p><h3>Multicaixa</h3></p>
+                    Dirija-se ao multicaixa e faça uma transferência para:<br>
+                    IBAN: AO06005500001495160212130<br>
+                    <b  ng-if="multibancoTotal">Valor: {{multibancoTotal | number | withPoint}}  AOA </b><br>
+                    AGRO MARKETPLACE SA<br>
+                    Envie o comprovativo para o email: geral@kepya.co.ao
+<hr>
+                  <a href="" ng-click="confirmarPagamento('M',numeroFacturaTotal, multibancoTotal)" class="btn btn-danger btn-md" role="button" style="margin-top:37px" ng-show="!successoFactura">Confirmar compra</a>
+                   
+                    
+                </div> 
+                          
+                  
+                </div>
+                
+
+                    
+                </div>
+              
+                  
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <div class="modal fade " data-keyboard="false" data-backdrop="static" id="checkout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-clock-o"></i> Checkout</h4>
+                    <!--a href="" class="btn btn-success" style="background-color:red" ng-click="logout()">Logout</a--> 
+                    <a href="" class="btn btn-success pull-right" style="" ng-click="fecharcheckout()" ng-show="user.statusTelephone == 1" >Fechar</a>
+
+                </div>
+                
+                
+                
+                <div class="container">
+                  <div class="alert-info col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" ng-show="successoFactura">
+                     <center><h2>{{successoFactura}}</h2> </center>
+                  </div>
+                  
+               
+                
+                
+                
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column productbox  text-center " ng-show="multibanco==0">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 column productbox " ng-repeat="producto in carrinho.items" style=" border: 2px solid white; border-radius: 0px;">
+                          <div class="card card-inverse card-info"  style="margin-bottom: 10px">
+                 
+                      <div class="card-header">
+
+                      </div>
+                      <div class="row">
+                         <div class="col-lg-4" >
+                                   
+                                   
+                                    <img src="https://kepya.co.ao/api/classes/img/{{producto.fotografia}}" class="img-responsive " style="max-width:300px">
+
+                                        
+
+                         </div>
+                         <div class="col-lg-8">
+                             <div class="card-block" style="text-align: left; margin-left: 5%">
+  <br>
+                            <strong>Producto: </strong><span >{{producto.producto | uppercase}}</span>
+                            <div class=""><strong>Descrição: </strong>{{producto.description}}</div>
+                            <div class="">
+                            <div>
+                              <strong>Data da Colheita: </strong> <span>{{(producto.dataColheita.split(' ')[0]).split('-')[2]}}-{{(producto.dataColheita.split(' ')[0]).split('-')[1]}}-{{(producto.dataColheita.split(' ')[0]).split('-')[0]}}</span><br>
+                                <b>Preço por Kg:</b> {{producto.preco | number | withPoint }} AOA<br>
+                               <div style="margin-top: 5%"> <strong>Quantidade a comprar/Kg: </strong>
+                                <input type="number" ng-model="quantidade"  min="300">
+                                </div>
+                            </div>
+                            
+                            <div class="pricetext" ng-show="quantidade" ng-init="quantidade=300" style="margin-top: 10px">
+                                <h4 style="color:red"><strong>Total a pagar:</strong> {{producto.preco * quantidade | number | withPoint }}  AOA</h4>
+                                
+                            </div>
+                            
+                               
+                           </div>
+                          </div>
+                         </div>
+
+                      </div>
+                      
+                      
+                      <div class="row" style="margin-top: 10px">
+                           <div class="panel panel-default" >
+                              <div class="panel-heading" style="background-color:#5A3679 !important; color: white; text-align: left">Por favor, preencha o endereço de entrega da mercadoria:</div>
+                              <div class="panel-body" style="text-align: left">
+                               
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label for="provvv"> Província: </label>
+                                            <select id="produto" name="provvv" class="form-control select" ng-model="registos.selectedProduct" ng-options="states.name as states.name for states  in states track by states.name">
+                                                                        <option value=""></option>
+                                              </select><br>
+                                          
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                              <label for="texta">Mais detalhes: Municipio, comuna, aldeia, numero da porta:</label> 
+                                              <textarea cols="20" rows="6" name="texta" ng-model="enderecoEntrega" maxlength="400" class="form-control"></textarea>
+                                        </div>
+                               </div>
+                            </div>
+                              <div class="row">
+
+                                        <button href="" ng-click="gravarFactura(producto.idProducto, producto.produtor,producto.preco * quantidade, quantidade,registos.selectedProduct,enderecoEntrega)" class="btn btn-danger btn-md" role="button" style="margin-top:10px" ng-disabled="desactivarBotaoComprar || !registos.selectedProduct || !enderecoEntrega" data-toggle="tooltip" data-placement="top" title="Os transportadores passarão a ver a tua reserva e poderão fazer proposta de transporte da sua mercadoria">Reservar e aguardar por propostas de transporte</button>
+
+                               </div>
+                      </div>
+                      
+                      
+                    </div>
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                           <!--div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <center> <img src="https://kepya.co.ao/api/classes/img/{{producto.fotografia}}" class="img-responsive " style="max-width:300px"></center>  
+                          
+                        
+                               
+                               <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-3" style="background-color:#5A3679;">
+                            <div class="form-group" >
+                               <span style="color:white"> Província: </span><select id="produto" class="form-control select" ng-model="registos.selectedProduct" ng-options="states.name as states.name for states  in states track by states.name" >
+                                    <option value=""></option>
+                                </select><br>
+                               <span style="color:white">Mais detalhes: Municipio, comuna, aldeia, numero da porta</span> <textarea cols="5" rows="3" ng-model="enderecoEntrega"></textarea>
+
+                            </div>
+
+                        </div>
+                          
+                            
+                            <div class="row">
+                                
+                                <button href="" ng-click="gravarFactura(producto.idProducto, producto.produtor,producto.preco * quantidade, quantidade,registos.selectedProduct,enderecoEntrega)" class="btn btn-danger btn-md" role="button" style="margin-top:10px" ng-disabled="desactivarBotaoComprar || !registos.selectedProduct || !enderecoEntrega" data-toggle="tooltip" data-placement="top" title="Os transportadores passarão a ver a tua reserva e poderão fazer proposta de transporte da sua mercadoria" >Reservar e aguardar por propostas de transporte</button>
+                                
+                            </div>
+                            
+                            
+                            
+                                 
+
+                           
+                           
+                           
+                           </div-->
+                       
+                      
+                             </div>
+                        
+                        
+                </div>
+                    
+                    
+                  
+
+                    
+                </div>
+              
+                  
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+     
+            <!-- /.modal-content -->
+    
+        <!-- /.modal-dialog -->
+ 
+      <div class="modal fade " data-keyboard="false" data-backdrop="static" id="verFacturas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <br>
+               <a href="" class="btn btn-success pull-right" style="" ng-click="fecharMinhasCompras()" ng-show="user.statusTelephone == 1" >Fechar</a>
+                <div class="container">
+                <center><h3>As Minhas Reservas</h3></center><p></p>
+                          
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div  style="overflow-x:auto;">
+                      <table class="table" style="width:100%; margin-top:30px">
+                       
+                       
+                        <tr class="" style="background-color:#5A3679; color:white" >
+                         <th style="margin-left:5px">
+                             Cód. da Reserva
+                         </th>
+                          <th >
+                            <p >Província de origem</p>
+                          </th>
+                          <!--th>
+                           <p>Província de destino</p>
+                          </th-->
+                          <th>
+                           <p>Mercadoria</p>
+                          </th>
+                          
+                          <th>
+                           <p>Qtd/Kg</p>
+                          </th>
+                          
+                          <th>
+                              Valor Total
+                          </th>
+                          <th>
+                              Destino
+                          </th>
+                           <th>
+                              Data da Compra
+                          </th>
+                          <th>
+                          </th>
+                          <th>
+                          </th>
+                        </tr>
+                       <tr>
+                          <span style="color:red" ng-show="reservaCancelada">Reserva cancelada</span>
+
+                       </tr>
+                        <tr ng-repeat="factura in minhasFacturas" style="align:left">
+                         <td>
+                            {{factura.numeroFactura }}
+                         </td>
+                         
+                         
+                          <td >
+                          <span ng-repeat="state in states" ng-if="state.id == factura.codProvince">
+                                     {{state.name}}
+                            </span>
+                          </td>
+                          <td >
+                           <span ng-repeat="product in products" ng-if="product.id == factura.idProduto">
+                                     {{product.name}}
+                            </span>
+                          </td>
+                           <td >
+                            {{factura.quantidade}}
+                          </td>
+                             <td ng-if="factura.totalPago">
+                                  {{factura.totalPago | number | withPoint}} AOA
+                             </td>
+                             
+                            <td >
+                           {{factura.enderecoEntrega}}
+                           
+                          </td>
+                                 <td style="font-size: 10px">
+                              {{(factura.dataCompra.split(' ')[0]).split('-')[2]}}-{{(factura.dataCompra.split(' ')[0]).split('-')[1]}}-{{(factura.dataCompra.split(' ')[0]).split('-')[0]}}
+                          </td>
+                           
+                             
+                          <td >
+                               <button type="button" class="btn btn-success btn-sm" ng-click="abrirBid(factura.numeroFactura)">Ver ofertas de transporte</button>
+                          </td>
+                          <td >
+                           <button type="button" class="btn btn-danger btn-sm" ng-click="cancelarReserva(factura.numeroFactura)">Cancelar reserva</button>
+                           
+                          </td>
+                          
+                        </tr>
+                  </table>
+                      
+                    
+                         
+                          
+                  </div>
+                </div>
+                
+
+                    
+                </div>
+              
+                  
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <div class="modal fade " data-keyboard="false" data-backdrop="static" id="verComprasPagas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <br>
+               <a href="" class="btn btn-success pull-right" style="" ng-click="fecharComprasPagas()" ng-show="user.statusTelephone == 1" >Fechar</a>
+                <div class="container">
+                <center><h3>As minhas Compras</h3></center><p></p>
+                           
+                                 
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                   <div  style="overflow-x:auto;">
+                      <table class="table" style="width:100%; margin-top:30px">
+                       
+                       
+                        <tr class="" style="background-color:#5A3679; color:white" >
+                          <th style="margin-left:5px">
+                             Cód. da Reserva
+                         </th>
+                          <th >
+                            <p >Província de origem</p>
+                          </th>
+                          <th>
+                              Destino
+                          </th>
+                          <!--th>
+                           <p>Província de destino</p>
+                          </th-->
+                          <th>
+                           <p>Mercadoria</p>
+                          </th>
+                          
+                          <th>
+                           <p>Qtd/Kg</p>
+                          </th>
+                          <th>
+                              Valor Total
+                          </th>
+                           <th>
+                          </th>
+                           <th>
+                              Data da Compra
+                          </th>
+                          
+                          
+                          <th>
+                          </th>
+                          <th>
+                          </th>
+                        </tr>
+                       
+                        <tr ng-repeat="factura in comprasPagas" style="align:left">
+                          <td>
+                            {{factura.numeroFactura }}
+                         </td>
+                         
+                          <td >
+                           <span ng-repeat="state in states" ng-if="state.id == factura.codProvince">
+                                     {{state.name}}
+                            </span>
+                           
+                          </td>
+                           <td >
+                           {{factura.enderecoEntrega}}
+                           
+                          </td>
+                           <!--td >
+                           
+                            <!--span ng-repeat="state in states" ng-if="state.id == factura.compradorProvincia">
+                                     {{state.name}}
+                            </span>
+                          </td-->
+                          <td >
+                           <span ng-repeat="product in products" ng-if="product.id == factura.idProduto">
+                                     {{product.name}}
+                            </span>
+                          </td>
+                           <td >
+                            {{factura.quantidade}}
+                          </td>
+                          
+                          <td ng-if="factura.totalPago" colspan="2">
+                                  {{factura.totalPago | number | withPoint}} AOA
+                             </td>
+                             
+                           
+                                 <td style="font-size: 10px">
+                              {{(factura.dataCompra.split(' ')[0]).split('-')[2]}}-{{(factura.dataCompra.split(' ')[0]).split('-')[1]}}-{{(factura.dataCompra.split(' ')[0]).split('-')[0]}}
+                          </td>
+                           
+                             
+                          
+                          <td >
+                           <button type="button" class="btn btn-success" ng-click="abrirBid(factura.numeroFactura); esconderBotaoPagar()">Ver transportador</button>
+                          </td>
+                          
+                          
+                         
+                          
+                        </tr>
+                  </table>
+                      </div>
+                    
+                         
+                          
+                  
+                </div>
+                
+
+                    
+                </div>
+              
+                  
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="modal fade " data-keyboard="false" data-backdrop="static" id="editarPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <br>
+               <a href="" class="btn btn-success pull-right" style="" ng-click="fecharEditarPerfil()" ng-show="user.statusTelephone == 1" >Fechar</a>
+                <div class="container">
+                <h3 style="margin-left: 40px">Editar Perfil</h3><p></p>
+                           
+                   <hr>              
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form role="form" name="registoNovo">
+               
+               
+               <div style="margin-top: 5%">
+                <span id="Error" class="error" ng-show="disable" ></span>
+                   
+               </div>
+
+               
+                <p></p>
+
+                <div class="row" ng-class="{'disabled':disable==true}">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                           Primeiro nome 
+                            <input type="text" ng-model="registosEd.firstName"  id="first_name" class="form-control input-lg" placeholder="Primeiro nome" tabindex="1">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                          Último nome
+                            <input type="text" ng-model="registosEd.lastName" id="last_name" class="form-control input-lg" placeholder="Último nome" tabindex="2">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                               
+                                Provincia<select id="produto" class="form-control select" ng-model="registosEd.selectedProduct" ng-options="states.id as states.name for states  in states track by states.id" tabindex="3">
+                                    <option value=""></option>
+                                </select>
+                                Actual: <span ng-repeat="state in states" ng-if="state.id == user.codProvince">{{state.name}}</span>
+                           
+                            </div>
+                        </div>       
+                            
+                   
+                    <input type="hidden" ng-model="registos.address" ng-nit="registos.address='Sem endereco'"> 
+
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group" ng-class="{'disabled':disable==true}">
+                            Telefone
+                            <input type="number" ng-pattern="number" value="{{user.telephone}}" ng-model="registosEd.telephone" class="form-control input-lg" placeholder="Telefone" tabindex="4">
+                        </div>
+
+                    </div>
+                     
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                          <div class="form-group" ng-class="{'disabled':disable==true}">
+                               Email
+                                <input type="email" ng-model="registosEd.email" id="email" class="form-control input-lg" placeholder="Email" tabindex="5">
+                            </div>
+                 </div>
+             
+                </div>
+
+                <!--div class="row" ng-class="{'disabled':disable==true}">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                           Password
+                            <input type="password" ng-model="registos.password" id="password" class="form-control input-lg" placeholder="Password" tabindex="6">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                           Confirme a Password
+                            <input type="password" ng-model="registos.password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirme a Password" tabindex="7">
+                        </div>
+                    </div>
+                  
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                        <span ng-show="registoNovo.registos.password.$dirty || registoNovo.registos.password_confirmation.$dirty || registos.password !== registos.password_confirmation" class="error">Por favor, verifique a  password</span>
+                         </div>
+                    </div>
+                </div-->
+                
+                <!--hr class="colorgraph"-->
+                <div class="row" style="margin-bottom: 20px">
+                    <div class="col-xs-12 col-md-12 col-md-12 col-sm-12"  ng-class="{'disabled':disable==true}">
+                    <input type="submit" value="Actualizar" ng-click="editarUser()" class="btn btnSuccess btn-primary btn-block btn-lg" tabindex="8" ng-disabled="!registosEd.firstName || !registosEd.lastName || !registosEd.selectedProduct  || !registosEd.telephone || !registosEd.email " ></div>
+                    <!--div class="col-xs-12 col-md-6"><a href="#" ng-click="login()" class="btn btn-success btnChangeOption btn-block btn-lg">Fazer login</a></div-->
+                </div>
+            </form>
+        </div>
+                
+
+                    
+                </div>
+              
+                  
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+       <div class="modal fade " data-keyboard="false" data-backdrop="static" id="bid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:92829292">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content MyModal">
+              <br>
+               <a href="" class="btn btn-danger pull-right" style="" ng-click="fecharBid()"  >Fechar</a>
+               
+             
+                <div class="container">
+                <center><h3>Propostas de Transporte</h3></center><p></p>
+                           
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="msg">
+                   <div class="alert-info alert">
+                       <span ng-bind="msg" style="font-size:20px; margin-left:20px"></span>
+                   </div>
+               </div>   
+                <!--div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-3 col-md-3 ">
+                            <div class="form-group">
+                            Valor a propór/Kzs: 
+                                   <input type="number" class="form-control select" ng-model="proposta.valor" min="1" style="width:100px">
+                            </div>
+                        </div>
+                  
+                  <div class="col-xs-12 col-sm-9 col-md-9 ">
+                            <div class="form-group">
+                               Mensagem adicional
+                                   <textarea id="produto" class="form-control select" ng-model="proposta.mensagem">
+                                    </textarea>
+                            </div>
+                        </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6 ">
+                        <button type="button" class="btn btn-success" ng-click="fazerBid()" ng-disabled="!proposta.valor">Propôr</button>
+
+                  </div>
+
+                </div-->
+              
+              
+              <style>
+                  .bidAceite{
+                      
+                      background-color: #8BCA8B !important;
+                      color: white
+                      
+                  }
+                  .bidAceiteDiv{
+                      
+                      background-color: #8BCA8B !important;
+                      color: white
+                      
+                  }
+                    </style>
+              
+              
+                <div class="row">
+                    
+                    
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1" id="logout">
+                            <div class="page-header">
+                                <h3 class="reviews">Histórico de conversa</h3>
+
+                            </div>
+                            <div class="comment-tabs">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize"></h4></a></li>
+
+                                </ul>            
+                                <div class="tab-content" >
+                                    <div class="tab-pane active" id="comments-logout" style="margin-top:10px">  
+                                        <ul class="media-list" ng-repeat="bid in bids" >
+                                          <li class="media" ng-if="bid.whoTexted == 'Transportador'">
+                                            <a class="pull-left" href="#">
+                                              <img class="media-object img-circle" src="../../../../img/dario.png" alt="profile" style="width:100px">
+                                            </a>
+                                            <div class="media-body">
+                                             <div ng-show="bid.statusBid == '1'" ng-class="{'bidAceite': bid.statusBid == '1'}" class="alert-info alert">
+                                                <span style="font-size:18px"> Proposta aceite </span>
+                                             </div>
+                                              <div class="well well-lg" ng-class="{'bidAceiteDiv': bid.statusBid == '1'}">
+                                                  <h4 class="media-heading text-uppercase reviews">{{bid.transportador}} </h4>
+                                                  <ul class="media-date text-uppercase reviews list-inline">
+                                                    <li class="dd">Proposta: <b style="color:red">{{bid.valorBid}}  AOA</b></li>
+
+                                                  </ul>
+                                                  <p class="media-comment">
+                                                    {{bid.mensagem}}
+                                                  </p> 
+                                                  <a class="btn btn-info btn-circle text-uppercase" ng-hide="esconderBotao" ng-click="aceitar(bid.id)"><span class="glyphicon glyphicon-share-alt"></span>Aceitar</a>
+                                                  <a class="btn btn-warning btn-circle text-uppercase"  ng-hide="esconderBotao" ng-click="efectuarPagamento(bid.idFactura, bid.valorBid)" ><span class="glyphicon glyphicon"  ></span>Efectuar o pagamento</a>
+                                                    <!--a class="btn btn-danger btn-circle text-uppercase"ng-click="rejeitar(bid.id)"><span class="glyphicon glyphicon-share-alt"></span>Cancelar</a-->
+                                              </div>              
+                                            </div>
+
+                                          </li>          
+
+                                          <!--li class="media" ng-if="bid.whoTexted == 'Comprador'">
+                                            <a class="pull-right" href="#">
+                                              <img class="media-object img-circle" src="../../../../img/wr.png" style="width:100px" alt="profile">
+                                            </a>
+                                            <div class="media-body">
+                                            <div ng-show="bid.statusBid == '1'" ng-class="{'bidAceite': bid.statusBid == '1'}" class="alert-info alert">
+                                                <span style="font-size:18px"> Proposta aceite </span>
+                                             </div>
+                                              <div class="well well-lg" ng-class="{'bidAceiteDiv': bid.statusBid == '1'}">
+                                                  <h4 class="media-heading text-uppercase reviews">{{bid.comprador}}</h4>
+                                                  <ul class="media-date text-uppercase reviews list-inline">
+                                                    <li class="dd">Proposta: <b style="color:red">{{bid.valorBid}} kzs</b></li>
+                                                  </ul>
+                                                  <p class="media-comment">
+                                                    {{bid.mensagem}}
+                                                  </p>
+                                                  <a class="btn btn-info btn-circle text-uppercase"  ng-click="aceitar(bid.id)"><span class="glyphicon glyphicon-share-alt"></span>Aceitar</a>
+                                                  <!--a class="btn btn-warning btn-circle text-uppercase" ng-click="rejeitar(bid.id)"><span class="glyphicon"></span>Rejeitar</a>
+                                              </div>              
+                                            </div>
+
+                                          </li-->
+                                        </ul> 
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    
+                    
+                    
+                </div>
+                
+
+                    
+                </div>
+              
+                  
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+	
+  </body>
+</html>
